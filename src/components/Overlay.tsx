@@ -1,4 +1,4 @@
-import { imgArray } from "../service/Api";
+import { imgArray } from "../service/api";
 import { useState } from "react";
 
 const Overlay = ({

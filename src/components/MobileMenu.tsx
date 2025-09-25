@@ -1,5 +1,5 @@
 import { useToggle } from "../context/toggleContext";
-import { menuList } from "../service/Api";
+import { menuList } from "../service/api";
 
 const MobileMenu = () => {
   const { toggle, setToggle } = useToggle();

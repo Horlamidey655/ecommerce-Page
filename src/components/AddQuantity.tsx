@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 const AddQuantity = ({
   setQuantity,
   quantity,
@@ -5,17 +7,21 @@ const AddQuantity = ({
   setQuantity: (quantity: number) => void;
   quantity: number;
 }) => {
-  const increaseQuantity = () => {
+  const increaseQuantity = useCallback(() => {
     setQuantity(quantity + 1);
-  };
-  const decreaseQuantity = () => {
+  }, [setQuantity, quantity]);
+  const decreaseQuantity = useCallback(() => {
     if (quantity > 1) setQuantity(quantity - 1);
-  };
+  }, [setQuantity, quantity]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return !e.target.value
-      ? setQuantity(0)
-      : setQuantity(parseInt(e.target.value));
+    const value = e.target.value;
+    const numValue = parseInt(value);
+
+    if (isNaN(numValue) || numValue < 0) {
+      setQuantity(0);
+      return;
+    }
   };
 
   return (

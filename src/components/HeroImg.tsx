@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { lazy, memo, Suspense, useState } from "react";
 
-import { imgArray } from "../service/Api";
-import Overlay from "./Overlay";
+import { imgArray } from "../service/api";
+
+const Overlay = lazy(() => import("./Overlay"));
 
 const HeroImg = () => {
   const [carouselImg, setCarouselImg] = useState(imgArray[0].img);
@@ -22,14 +23,20 @@ const HeroImg = () => {
 
   return (
     <figure className="flex flex-col gap-4 overflow-hidden md:px-6">
-      {showOverlay && <Overlay setShowOverlay={setShowOverlay} />}
+      {showOverlay && (
+        <Suspense>
+          <Overlay setShowOverlay={setShowOverlay} />
+        </Suspense>
+      )}
 
       <div className="sm:w-[21.5rem] h-[25rem] sm:rounded-lg sm:h-[20rem]">
         <img
           src={carouselImg}
           alt=""
+          loading="eager"
           className="object-cover w-full h-full max-sm:hidden rounded-lg"
-          loading="lazy"
+          width={400}
+          height={400}
           onClick={() => setShowOverlay(true)}
         />
 
@@ -40,13 +47,15 @@ const HeroImg = () => {
             className="flex w-full h-full transition-transform duration-300 ease-in-out"
             style={{ transform: `translateX(-${count * 100}%)` }}
           >
-            {imgArray.map((img) => (
+            {imgArray.map((img, index) => (
               <div key={img.img} className="w-full h-full flex-shrink-0">
                 <img
                   src={img.img}
                   alt=""
+                  loading={index === 0 ? "eager" : "lazy"}
                   className="object-cover w-full h-full"
-                  loading="lazy"
+                  width={400}
+                  height={400}
                 />
               </div>
             ))}
@@ -104,6 +113,8 @@ const HeroImg = () => {
             key={img.thumb}
             onClick={() => handleThumbnail(index)}
             loading="lazy"
+            width={80}
+            height={80}
           />
         ))}
       </div>
@@ -111,4 +122,4 @@ const HeroImg = () => {
   );
 };
 
-export default HeroImg;
+export default memo(HeroImg);

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { type CartItemProps } from "../service/Api";
+import { type CartItemProps } from "../service/api";
 
 interface toggleProps {
   toggle: boolean;

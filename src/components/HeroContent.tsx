@@ -1,7 +1,7 @@
 import Button from "./Button";
 import AddQuantity from "./AddQuantity";
-import { cartItems, type CartItemProps } from "../service/Api";
-import { useState } from "react";
+import { cartItems, type CartItemProps } from "../service/api";
+import { useState, useCallback } from "react";
 
 import { useToggle } from "../context/toggleContext";
 
@@ -9,10 +9,13 @@ const HeroContent = () => {
   const { addToCart } = useToggle();
   const [quantity, setQuantity] = useState(1);
 
-  const handleCartChange = (cartItem: CartItemProps) => {
-    const newItem = { ...cartItem, quantity: quantity };
-    addToCart(newItem);
-  };
+  const handleCartChange = useCallback(
+    (cartItem: CartItemProps) => {
+      const newItem = { ...cartItem, quantity: quantity };
+      addToCart(newItem);
+    },
+    [addToCart, quantity]
+  );
 
   return cartItems.map((cart) => {
     return (

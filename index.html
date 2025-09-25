@@ -9,8 +9,29 @@
       href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="preload"
+      href="/src/assets/images/image-product-1.jpg"
+      as="image"
+      type="image/jpeg"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <style>
+      /* Critical CSS for above-the-fold content */
+      .hero-section {
+        display: flex;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      /* Add other critical styles */
+    </style>
   </head>
   <body>
     <div id="root"></div>

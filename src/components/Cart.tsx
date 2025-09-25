@@ -15,6 +15,7 @@ const Cart = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
 
     setShowCart(false);
   };
+
   return (
     <article className="">
       <div className="p-6 bg-[var(--color-white)] rounded-lg shadow-md max-w-[30rem] grid gap-4">

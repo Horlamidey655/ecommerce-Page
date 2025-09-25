@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRef } from "react";
 import { useToggle } from "../context/toggleContext";
-import { menuList } from "../service/Api";
+import { menuList } from "../service/api";
 import logo from "../assets/logo.svg";
 import avatar from "../assets/images/image-avatar.png";
 import ListItem from "./ListItem";
-import Cart from "./Cart";
+import { lazy } from "react";
 
+const Cart = lazy(() => import("./Cart"));
 const Nav = () => {
   const { cart } = useToggle();
   const [showCart, setShowCart] = useState(false);
@@ -51,7 +52,9 @@ const Nav = () => {
           className="absolute gap-6 rounded-lg z-80 max-sm:grid max-sm:place-content-center top-[70%] right-[5%] w-[25rem] max-sm:w-[20rem]"
           ref={cartRef}
         >
-          <Cart setShowCart={setShowCart} />
+          <Suspense>
+            <Cart setShowCart={setShowCart} />
+          </Suspense>
         </div>
       )}
       <div className="flex items-center gap-3 md:gap-[3rem]">

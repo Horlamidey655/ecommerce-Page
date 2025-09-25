@@ -1,9 +1,12 @@
 import "./App.css";
 // import AddQuantity from "./component/AddQuantity";
-import MobileMenu from "./component/MobileMenu";
-import Nav from "./component/Nav";
+
+import Nav from "./components/Nav";
 import { useToggle } from "./context/toggleContext";
-import Hero from "./component/Hero";
+import Hero from "./components/Hero";
+import { lazy, Suspense } from "react";
+
+const MobileMenu = lazy(() => import("./components/MobileMenu"));
 
 function App() {
   const { toggle } = useToggle();
@@ -11,12 +14,15 @@ function App() {
     <>
       <header>
         <Nav />
-        {/* <Cart /> */}
-        {toggle && <MobileMenu />}
+
+        {toggle && (
+          <Suspense fallback={<div>Loading menu images...</div>}>
+            <MobileMenu />
+          </Suspense>
+        )}
       </header>
       <main className="max-sm:py-0 max-w-[70rem] py-[7rem] mx-auto">
         <Hero />
-        {/* <AddQuantity /> */}
       </main>
     </>
   );
