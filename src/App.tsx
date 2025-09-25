@@ -1,5 +1,4 @@
 import "./App.css";
-// import AddQuantity from "./component/AddQuantity";
 
 import Nav from "./components/Nav";
 import { useToggle } from "./context/toggleContext";
