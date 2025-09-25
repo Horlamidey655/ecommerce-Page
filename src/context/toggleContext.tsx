@@ -1,29 +1,44 @@
 import { createContext, useContext, useState } from "react";
-
-interface cartProps {
-  itemName: string;
-  quantity: number;
-}
+import { type CartItemProps } from "../service/Api";
 
 interface toggleProps {
   toggle: boolean;
   setToggle: (toggle: boolean) => void;
-  addCart: (cartQuantity: cartProps) => void;
-  cart: cartProps[];
+  addToCart: (cart: CartItemProps) => void;
+  cart: CartItemProps[];
+  removeFromCart: (cart: CartItemProps) => void;
 }
 
 const ToggleContext = createContext<toggleProps | null>(null);
 
-const ToggleProvider = ({ children }: { children: React.ReactNode }) => {
+export const ToggleProvider = ({ children }: { children: React.ReactNode }) => {
   const [toggle, setToggle] = useState(false);
-  const [cart, setCart] = useState<cartProps[]>([]);
+  const [cart, setCart] = useState<CartItemProps[]>([]);
 
-  const addCart = (cartQuantity: cartProps) => {
-    setCart((prevCart) => [...prevCart, cartQuantity]);
+  const addToCart = (ItemList: CartItemProps) => {
+    setCart((prevCart) => {
+      const isPresent = prevCart.some((item) => item.id === ItemList.id);
+      if (isPresent) {
+        return prevCart.map((item) => {
+          return item.id === ItemList.id
+            ? { ...item, quantity: ItemList.quantity }
+            : item;
+        });
+      }
+      return [...prevCart, ItemList];
+    });
+  };
+
+  const removeFromCart = (item: CartItemProps) => {
+    setCart((prevCart) =>
+      prevCart.filter((itemList) => itemList.id !== item.id)
+    );
   };
 
   return (
-    <ToggleContext.Provider value={{ toggle, setToggle, addCart, cart }}>
+    <ToggleContext.Provider
+      value={{ toggle, setToggle, addToCart, cart, removeFromCart }}
+    >
       {children}
     </ToggleContext.Provider>
   );

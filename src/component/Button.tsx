@@ -6,7 +6,7 @@ interface Props {
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & Props;
 
-const Button = ({ variant, className, text }: ButtonProps) => {
+const Button = ({ variant, className, text, ...props }: ButtonProps) => {
   const variantClassic = {
     primary:
       "bg-[var(--color-orange)] text-[var(--color-black)] hover:bg-[var(--color-pale-orange)]",
@@ -14,7 +14,8 @@ const Button = ({ variant, className, text }: ButtonProps) => {
 
   return (
     <button
-      className={`flex gap-3 ease-in-out duration-300 p-3 ${variantClassic[variant]} rounded-md ${className}`}
+      className={`flex gap-3 ease-in-out duration-300 w-full h-full whitespace-nowrap justify-center p-3 ${variantClassic[variant]} rounded-md ${className}`}
+      {...props}
     >
       <span>
         <svg
