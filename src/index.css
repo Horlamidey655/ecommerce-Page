@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-@theme {
-  /* Colors */
+/* Custom CSS Variables */
+:root {
   --color-orange: hsl(26, 100%, 55%);
   --color-pale-orange: hsl(25, 100%, 94%);
   --color-dark-blue: hsl(220, 13%, 13%);
@@ -10,17 +10,47 @@
   --color-light-grayish-blue: hsl(223, 64%, 98%);
   --color-white: hsl(0, 0%, 100%);
   --color-black: hsl(0, 0%, 0%);
-
-  /* Fonts */
-  --font-display: "Kumbh Sans", sans-serif;
-  --font-body: "Kumbh Sans", sans-serif;
 }
 
+/* Base Styles */
 body {
-  font-family: var(--font-body);
+  font-family: "Kumbh Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   overflow-x: hidden;
   max-width: 80rem;
   margin-inline: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure Tailwind utilities work */
+* {
+  box-sizing: border-box;
+}
+
+/* Custom utility classes */
+.text-orange {
+  color: var(--color-orange);
+}
+
+.bg-orange {
+  background-color: var(--color-orange);
+}
+
+.bg-pale-orange {
+  background-color: var(--color-pale-orange);
+}
+
+.text-dark-blue {
+  color: var(--color-dark-blue);
+}
+
+.text-dark-grayish-blue {
+  color: var(--color-dark-grayish-blue);
+}
+
+.bg-light-grayish-blue {
+  background-color: var(--color-light-grayish-blue);
 }

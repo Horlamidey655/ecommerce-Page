@@ -1,5 +1,3 @@
-import "./App.css";
-
 import Nav from "./components/Nav";
 import { useToggle } from "./context/toggleContext";
 import Hero from "./components/Hero";
