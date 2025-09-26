@@ -20,9 +20,9 @@ body {
   line-height: 1.5rem;
   overflow-x: hidden;
   max-width: 80rem;
+  /* margin: 0;
+  padding: 0; */
   margin-inline: auto;
-  margin: 0;
-  padding: 0;
 }
 
 /* Ensure Tailwind utilities work */
