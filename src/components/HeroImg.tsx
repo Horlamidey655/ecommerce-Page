@@ -29,14 +29,12 @@ const HeroImg = () => {
         </Suspense>
       )}
 
-      <div className="sm:w-[21.5rem] h-[25rem] sm:rounded-lg sm:h-[20rem]">
+      <div className="sm:w-[18rem] h-[20rem] sm:rounded-lg sm:h-[20rem]">
         <img
           src={carouselImg}
           alt=""
           loading="eager"
           className="object-cover w-full h-full max-sm:hidden rounded-lg"
-          width={400}
-          height={400}
           onClick={() => setShowOverlay(true)}
         />
 
@@ -109,12 +107,10 @@ const HeroImg = () => {
               img.img === carouselImg
                 ? "border-4 border-[var(--color-orange)] opacity-50"
                 : ""
-            } w-[5rem] h-[5rem] rounded-lg object-cover`}
+            } w-[4rem] h-[4rem] rounded-lg object-cover`}
             key={img.thumb}
             onClick={() => handleThumbnail(index)}
             loading="lazy"
-            width={80}
-            height={80}
           />
         ))}
       </div>

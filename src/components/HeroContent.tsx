@@ -20,13 +20,13 @@ const HeroContent = () => {
   return cartItems.map((cart) => {
     return (
       <div className="px-6 py-5 md:px-8" key={cart.id}>
-        <p className="text-[var(--color-dark-grayish-blue)] mb-[0.8rem] uppercase">
+        <p className="text-[var(--color-dark-grayish-blue)]  text-sm mb-[0.6rem] uppercase">
           {cart.title}
         </p>
-        <h1 className="text-2xl sm:text-4xl font-bold max-sm:mb-[1rem] mb-[4rem]">
+        <h1 className="text-2xl sm:text-4xl font-bold max-sm:mb-[1rem] mb-[1.5rem]">
           {cart.title}
         </h1>
-        <p className="mb-8">{cart.description}</p>
+        <p className="mb-3">{cart.description}</p>
 
         <div className="flex gap-2 sm:flex-col max-sm:items-center max-sm:justify-between mb-6">
           <div className="flex items-center gap-2">
@@ -40,7 +40,7 @@ const HeroContent = () => {
           </span>
         </div>
 
-        <div className="flex gap-4 max-sm:flex-wrap items-center">
+        <div className="flex gap-2 max-sm:flex-wrap items-center">
           <AddQuantity setQuantity={setQuantity} quantity={quantity} />
           <Button
             variant="primary"

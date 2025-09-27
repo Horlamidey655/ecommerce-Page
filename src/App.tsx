@@ -18,7 +18,7 @@ function App() {
           </Suspense>
         )}
       </header>
-      <main className="max-sm:py-0 max-w-[70rem] py-[7rem] mx-auto">
+      <main className="max-sm:py-0 max-w-[55rem] py-[4rem] mx-auto">
         <Hero />
       </main>
     </>
