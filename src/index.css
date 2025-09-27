@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Custom CSS Variables */
 :root {
   --color-orange: hsl(26, 100%, 55%);
   --color-pale-orange: hsl(25, 100%, 94%);
@@ -20,12 +19,9 @@ body {
   line-height: 1.5rem;
   overflow-x: hidden;
   max-width: 80rem;
-  /* margin: 0;
-  padding: 0; */
   margin-inline: auto;
 }
 
-/* Ensure Tailwind utilities work */
 * {
   box-sizing: border-box;
 }

@@ -22,7 +22,7 @@ const HeroImg = () => {
   };
 
   return (
-    <figure className="flex flex-col gap-4 overflow-hidden md:px-6">
+    <figure className="flex flex-col gap-4 overflow-hidden">
       {showOverlay && (
         <Suspense>
           <Overlay setShowOverlay={setShowOverlay} />
